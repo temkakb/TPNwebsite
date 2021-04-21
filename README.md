@@ -2,7 +2,7 @@
 wanna to see workflow?
 https://gitlab.com/unknown20/cnpm
 
-TPN mean : tân , phát, Name , the names of contributors
+TPN mean : tân, phát, Nam. The names of contributors
 # how to use it
 clone this code then install
                 
