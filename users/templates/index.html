@@ -1,0 +1,881 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <link rel="icon" type="image/png" href="/static/img/icon/your-logo.png" />
+
+
+
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title> NTP Brand | Trang chủ</title>
+    
+    <!-- Font awesome -->
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">  
+    
+    <link href="{% static 'css/jquery.smartmenus.bootstrap.css' %}" rel="stylesheet"> 
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.simpleLens.css' %}">    
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"> 
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nouislider.css' %}"> 
+    <!-- Theme color -->
+    <link id="switcher" href="{% static 'css/pink-theme.css' %}" rel="stylesheet"> 
+    <!-- Top Slider CSS -->
+    <link href="{% static 'css/jquery.smartmenus.bootstrap.css' %}" rel="stylesheet" media="all"> 
+
+    <!-- Main style sheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">    
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+      <script type="text/javascript">
+            var user = '{{request.user}}'
+            function getToken(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getToken('csrftoken');
+      </script>
+  </head>
+  <body> 
+   <!-- wpf loader Two -->
+    <div id="wpf-loader-two">          
+      <div class="wpf-loader-two-inner">
+        <span>Loading</span>
+      </div>
+    </div> 
+    <!-- / wpf loader Two -->       
+  <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+
+  <!-- Start header section -->
+  <header id="aa-header">
+    <!-- start header top  -->
+    <div class="aa-header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-header-top-area">
+              <!-- start header top left -->
+              <div class="aa-header-top-left">
+                <!-- start language -->
+               
+                <!-- / language -->
+
+                <!-- start currency -->
+               
+                <!-- / currency -->
+                <!-- start cellphone -->
+                <div class="cellphone hidden-xs">
+                  <p><span class="fa fa-phone"></span>09696969696</p>
+                  
+                </div>
+                <!-- / cellphone -->
+              </div>
+              <!-- / header top left -->
+              <div class="aa-header-top-right">
+                <ul class="aa-head-top-nav-right">
+                <li><a href="{% url 'minigame' %}">Mini Game</a></li>
+               {% if request.user.is_anonymous %}
+                  <li><a href="{% url 'register' %}">Đăng ký</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Đăng nhập</a></li>
+                  {% else %}
+                  <li><a href="#">{{request.user}}</a></li>
+                  <li><a href="{% url 'logout' %}">đăng xuất</a></li>
+                  {% endif %}
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / header top  -->
+
+    <!-- start header bottom  -->
+    <div class="aa-header-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-header-bottom-area">
+              <!-- logo  -->
+              <div class="aa-logo">
+                <!-- Text based logo -->
+                <a href="{% url 'home' %}">
+                  <span class="fa fa-shopping-cart"></span>
+                  <p>NTP<strong>Brand</strong> <span>Fashion for all </span></p>
+                </a>
+                <!-- img based logo -->
+                <!-- <a href="index.html"><img src="img/logo.jpg" alt=" logo img"></a> -->
+              </div>
+              <!-- / logo  -->
+               <!-- cart box -->
+              <div class="aa-cartbox">
+                <a class="aa-cart-link" href="{% url 'cart' %}">
+                  <span class="fa fa-shopping-basket"></span>
+                  <span class="aa-cart-title">Giỏ hàng</span>
+                  <span class="aa-cart-notify">{{cartItem}}</span>
+                </a>
+               
+              </div>
+              <!-- / cart box -->
+              <!-- search box -->
+              <div class="aa-search-box">
+                <form action="{% url 'search_page' %}">
+                  <input type="text" name="search" id="" placeholder="Tìm kiếm sản phẩm ">
+                  <button type="submit" name = "but_search" value="clicked" ><span class="fa fa-search"></span></button>
+                </form>
+              </div>
+              <!-- / search box -->             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / header bottom  -->
+  </header>
+  <!-- / header section -->
+  <!-- menu -->
+  <section id="menu">
+    <div class="container">
+      <div class="menu-area">
+        <!-- Navbar -->
+        <div class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>          
+          </div>
+          <div class="navbar-collapse collapse">
+            <!-- Left nav -->
+            <ul class="nav navbar-nav">
+              <li><a href="{% url 'home' %}"> Trang chủ</a></li>
+              <li><a href="{% url 'ao_page' %}">Áo thun</a>
+                
+              </li>
+              <li><a href="{% url 'quan_page' %}">Quần</a>
+                
+              </li>
+              <li><a href="{% url 'aokhoac_page' %}">Áo khoác</a>
+               
+              </li>
+              <!-- <li><a href="#">Sports</a></li>
+             <li><a href="#">Digital <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                  <li><a href="#">Camera</a></li>
+                  <li><a href="#">Mobile</a></li>
+                  <li><a href="#">Tablet</a></li>
+                  <li><a href="#">Laptop</a></li>                                                
+                  <li><a href="#">Accesories</a></li>                
+                </ul>
+              </li>
+              <li><a href="#">Furniture</a></li>            
+              <li><a href="blog-archive.html">Blog <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                  <li><a href="blog-archive.html">Blog Style 1</a></li>
+                  <li><a href="blog-archive-2.html">Blog Style 2</a></li>
+                  <li><a href="blog-single.html">Blog Single</a></li>                
+                </ul>
+              </li> -->
+              <li><a href="{% url 'sanpham_page' %}">Sản phẩm</a></li>
+               <li><a href="{% url 'lienhe' %}">Liên hệ <!--<span class="caret"></span>--></a> 
+                <!-- <ul class="dropdown-menu">                
+                  <li><a href="product.html">Shop Page</a></li>
+                  <li><a href="product-detail.html">Shop Single</a></li>                
+                  <li><a href="404.html">404 Page</a></li>                
+                </ul>
+              </li>
+            </ul> -->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>       
+    </div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!--   -->
+  <div class="carousel-inner">
+    <div class="item active">
+    
+      <img src="{% static  'img/slides/slide3.jpg' %}" alt="Los Angeles">
+     
+    </div>
+    
+
+    <div class="item">
+      <img src="{% static 'img/slides/slide2.jpg' %}" alt="Chicago">
+      
+    </div>
+
+    <div class="item">
+      <img src="{% static 'img/slides/slide1.jpg' %}" alt="New York">
+      
+    </div>
+    
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+  </section>
+  <!-- / menu -->
+  <!-- Start slider -->
+ 
+  <!-- / slider -->
+  <!-- Start Promo section -->
+
+  <!-- / Promo section -->
+  <!-- Products section -->
+  <section id="aa-product">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="aa-product-area">
+              <div class="aa-product-inner">
+                <!-- start prduct navigation -->
+                 <ul class="nav nav-tabs aa-products-tab">
+                    <li class="active"><a href="#Popular" data-toggle="tab">Popular</a></li>
+                    
+                    <li><a href="#Latest" data-toggle="tab">Latest</a></li>
+                    <li><a href="#Product" data-toggle="tab">Sản phẩm</a></li>
+                  </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                  
+                  
+                    <!-- Start Latest-->
+                    <div class="tab-pane fade  active in " id="Popular">
+                      <ul class="aa-product-catg">
+                        <!-- start single product item -->
+                        {% for item in listsp_trending %}
+                        <li>
+                          <figure>
+                            <a class="aa-product-img" href="{% url 'chitietsp' item.slug %}"><img src="{{ item.photo_url|default_if_none:'#'}}" alt=""></a>
+                            
+                           {% if item.soluongtonkho == 0 %}
+                       <a  style="cursor:pointer;" class="aa-add-card-btn "></span>Hết hàng</a>
+                       {% else %}
+                      <a data-product="{{item.masp}}" data-action="add" data-detail="YES"  style="cursor:pointer;" class="aa-add-card-btn update-cart"></span>Thêm vào giỏ hàng</a>
+                      {% endif %}
+                              
+                            <figcaption>
+                              <h4 class="aa-product-title"><a href="{% url 'chitietsp' item.slug %}">{{item.tensp}}</a></h4>
+                              {% comment %} {% if item.soluong_mua == None %}
+                              <p>số lượng order : chưa có</p>
+                              {% else %}
+                              <p>số lượng order :{{item.soluong_mua}} </p>
+                              {% endif %} {% endcomment %}
+                              
+                              <span class="aa-product-price">{{item.giatien}}</span><span class="aa-product-price"><del></del></span>
+                            </figcaption>
+                          </figure>                        
+                          <div class="aa-product-hvr-content">
+                           
+                                               
+                          </div> 
+                             {% if item.soluongtonkho == 0 %}
+                    <span class="aa-badge aa-sold-out" href="#">Hết hàng</span>
+                     {% endif %}
+                        </li>   
+                        {% endfor %}                     
+                      </ul>
+                     
+                    </div>
+                    <div class="tab-pane fade " id="Latest">
+                      <ul class="aa-product-catg">
+                        <!-- start single product item -->
+                        {% for item in listsp_late %}
+                        <li>
+                          <figure>
+                            <a class="aa-product-img" href="{% url 'chitietsp' item.slug %}"><img src="{{ item.photo_url|default_if_none:'#'}}" alt=""></a>
+                           {% if item.soluongtonkho == 0 %}
+                            <!--nếu số lượng == 0 thì không cho ng ta ấn xóa class update cart-->
+                       <a  style="cursor:pointer;" class="aa-add-card-btn "></span>Hết hàng</a>
+                       {% else %}
+                      <a data-product="{{item.masp}}" data-action="add" data-detail="YES"  style="cursor:pointer;" class="aa-add-card-btn update-cart"></span>Thêm vào giỏ hàng</a>
+                      {% endif %}
+                              <figcaption>
+                              <h4 class="aa-product-title"><a href="{% url 'chitietsp' item.slug %}">{{item.tensp}}</a></h4>
+                              <span class="aa-product-price">{{item.giatien}}</span><span class="aa-product-price"><del></del></span>
+                            </figcaption>
+                          </figure>                        
+                          <div class="aa-product-hvr-content">
+                           
+                                               
+                          </div>  <!--nếu số lượng tồn kho ==0 thì thêm cái banner hết hàng vào-->
+                          {% if item.soluongtonkho == 0 %}
+                    <span class="aa-badge aa-sold-out" href="#">Hết hàng</span>
+                     {% endif %}
+                        </li>   
+                        {% endfor %}                     
+                      </ul>
+                     
+                    </div>
+                     <div class="tab-pane fade " id="Product">
+                      <ul class="aa-product-catg">
+                        <!-- start single product item -->
+                        {% for item in listsp %}
+                        <li>
+                          <figure>
+                            <a class="aa-product-img" href="{% url 'chitietsp' item.slug %}"><img src="{{ item.photo_url|default_if_none:'#'}}" alt=""></a>
+                          {% if item.soluongtonkho == 0 %}
+                       <a  style="cursor:pointer;" class="aa-add-card-btn "></span>Hết hàng</a>
+                       {% else %}
+                      <a data-product="{{item.masp}}" data-action="add" data-detail="YES"  style="cursor:pointer;" class="aa-add-card-btn update-cart"></span>Thêm vào giỏ hàng</a>
+                      {% endif %}
+                              <figcaption>
+                              <h4 class="aa-product-title"><a href="{% url 'chitietsp' item.slug %}">{{item.tensp}}</a></h4>
+                              <span class="aa-product-price">{{item.giatien}}</span><span class="aa-product-price"><del></del></span>
+                            </figcaption>
+                          </figure>                        
+                          <div class="aa-product-hvr-content">
+                           
+                          </div> 
+                             {% if item.soluongtonkho == 0 %}
+                    <span class="aa-badge aa-sold-out" href="#">Hết hàng</span>
+                     {% endif %}
+                        </li>   
+                        {% endfor %}                     
+                      </ul>
+                     
+                    </div>
+                   
+                    <!-- / electronic product category -->
+                  </div>
+                  <!-- quick view modal -->                  
+                  <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">                      
+                        <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <div class="row">
+                            <!-- Modal view slider -->
+                            <div class="col-md-6 col-sm-6 col-xs-12">                              
+                              <div class="aa-product-view-slider">                                
+                                <div class="simpleLens-gallery-container" id="demo-1">
+                                  <div class="simpleLens-container">
+                                      <div class="simpleLens-big-image-container">
+                                          <a class="simpleLens-lens-image" data-lens-image="img/view-slider/large/polo-shirt-1.png">
+                                              <img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
+                                          </a>
+                                      </div>
+                                  </div>
+                                  <div class="simpleLens-thumbnails-container">
+                                      <a href="#" class="simpleLens-thumbnail-wrapper"
+                                         data-lens-image="img/view-slider/large/polo-shirt-1.png"
+                                         data-big-image="img/view-slider/medium/polo-shirt-1.png">
+                                          <img src="img/view-slider/thumbnail/polo-shirt-1.png">
+                                      </a>                                    
+                                      <a href="#" class="simpleLens-thumbnail-wrapper"
+                                         data-lens-image="img/view-slider/large/polo-shirt-3.png"
+                                         data-big-image="img/view-slider/medium/polo-shirt-3.png">
+                                          <img src="img/view-slider/thumbnail/polo-shirt-3.png">
+                                      </a>
+
+                                      <a href="#" class="simpleLens-thumbnail-wrapper"
+                                         data-lens-image="img/view-slider/large/polo-shirt-4.png"
+                                         data-big-image="img/view-slider/medium/polo-shirt-4.png">
+                                          <img src="img/view-slider/thumbnail/polo-shirt-4.png">
+                                      </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Modal view content -->
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <div class="aa-product-view-content">
+                                <h3>T-Shirt</h3>
+                                <div class="aa-price-block">
+                                  <span class="aa-product-view-price">$34.99</span>
+                                  <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+                                </div>
+                                <p>website đồ án</p>
+                                <h4>Size</h4>
+                                <div class="aa-prod-view-size">
+                                  <a href="#">S</a>
+                                  <a href="#">M</a>
+                                  <a href="#">L</a>
+                                  <a href="#">XL</a>
+                                </div>
+                                <div class="aa-prod-quantity">
+                                  <form action="">
+                                    <select name="" id="">
+                                      <option value="0" selected="1">1</option>
+                                      <option value="1">2</option>
+                                      <option value="2">3</option>
+                                      <option value="3">4</option>
+                                      <option value="4">5</option>
+                                      <option value="5">6</option>
+                                    </select>
+                                  </form>
+                                  <p class="aa-prod-category">
+                                    Category: <a href="#">Polo T-Shirt</a>
+                                  </p>
+                                </div>
+                                <div class="aa-prod-view-bottom">
+                                  <a href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                  <a href="#" class="aa-add-to-cart-btn">View Details</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>                        
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- / quick view modal -->              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Products section -->
+  <!-- banner section -->
+  <!-- <section id="aa-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">        
+          <div class="row">
+            <div class="aa-banner-area">
+            <a href="#"><img src="img/fashion-banner.jpg" alt="fashion banner img"></a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- popular section -->
+  
+  <!-- / popular section -->
+  <!-- Support section -->
+  <section id="aa-support">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-support-area">
+            <!-- single support -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="aa-support-single">
+                <span class="fa fa-truck"></span>
+                <h4>Miễn Phí Vận Chuyển</h4>
+                <P>Giao hàng miễn phí với tốc độ bàn thờ </P>
+              </div>
+            </div>
+            <!-- single support -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="aa-support-single">
+                <span class="fa fa-clock-o"></span>
+                <h4>Giao hàng từ 3 - 5 ngày</h4>
+                <P>Thời gian là vàng là bạc </P>
+              </div>
+            </div>
+            <!-- single support -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="aa-support-single">
+                <span class="fa fa-phone"></span>
+                <h4>Hỗ trợ 24/7</h4>
+                <P> Luôn luôn lắng nghe , luôn luôn thấu hiểu </P>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Support section -->
+  <!-- Testimonial -->
+  <section id="aa-testimonial">  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-testimonial-area">
+            <ul class="aa-testimonial-slider">
+              <!-- single slide -->
+              <li>
+                <div class="aa-testimonial-single">
+                <img class="aa-testimonial-img" src="https://scontent.fsgn1-1.fna.fbcdn.net/v/t1.0-9/128752564_2793578414223833_977353219943721604_o.jpg?_nc_cat=103&ccb=2&_nc_sid=09cbfe&_nc_ohc=WGXiu3D29GgAX8feyIx&_nc_ht=scontent.fsgn1-1.fna&oh=d661669626aaa3254af1875b7f040caa&oe=6014C1C8" alt="testimonial img">
+                  <span class="fa fa-quote-left aa-testimonial-quote"></span>
+                  <p>"Hãy nói không với chết đói"</p>
+                  <div class="aa-testimonial-info">
+                    <p>Trần Nguyễn Nhật Nam</p>
+                    <span>CEO</span>
+                    <!-- <a href="#">Dribble.com</a> -->
+                  </div>
+                </div>
+              </li>
+              <!-- single slide -->
+              <li>
+                <div class="aa-testimonial-single">
+                <img class="aa-testimonial-img" src="https://scontent-hkg4-1.xx.fbcdn.net/v/t1.0-9/78500136_1050538201944858_8650514401335443456_o.jpg?_nc_cat=107&ccb=2&_nc_sid=09cbfe&_nc_ohc=TxtnnIUMrQIAX8ephUO&_nc_ht=scontent-hkg4-1.xx&oh=d6ba9044c72e74db1a7cc5c527362b20&oe=60146DCF" alt="testimonial img">
+                  <span class="fa fa-quote-left aa-testimonial-quote"></span>
+                  <p>"Một cây làm chẳng lên non , ba cây chụm lại nên NTP SHOP"</p>
+                  <div class="aa-testimonial-info">
+                    <p>Dương Minh Tân</p>
+                    <span>CEO</span>
+                    <!-- <a href="#">Alphabet</a> -->
+                  </div>
+                </div>
+              </li>
+               <!-- single slide -->
+              <li>
+                <div class="aa-testimonial-single">
+                <img class="aa-testimonial-img" src="https://scontent.fsgn1-1.fna.fbcdn.net/v/t1.0-1/p240x240/120366589_2673108359607443_7206961240241231697_o.jpg?_nc_cat=103&ccb=2&_nc_sid=7206a8&_nc_ohc=ObwtwY8r38YAX88HIpA&_nc_ht=scontent.fsgn1-1.fna&tp=6&oh=92f47ef17566007b5d04c13ef4eaae93&oe=60119283" alt="testimonial img">
+                  <span class="fa fa-quote-left aa-testimonial-quote"></span>
+                  <p>"Không gì thoải mái bằng ỉa đái kịp thời"</p>
+                  <div class="aa-testimonial-info">
+                    <p>Tăng Thuận Phát</p>
+                    <span>CEO</span>
+                    <!-- <a href="#">Kinatic Solution</a> -->
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Load Facebook SDK for JavaScript -->
+    <!-- Load Facebook SDK for JavaScript -->
+      <!-- Load Facebook SDK for JavaScript -->
+    <!-- Load Facebook SDK for JavaScript -->
+      <!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v9.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="102535955131569"
+  theme_color="#0A7CFF"
+  logged_in_greeting="Xin chào bạn!"
+  logged_out_greeting="Xin chào bạn!">
+      </div>
+
+  <!-- / Testimonial -->
+
+  <!-- Latest Blog -->
+   <!-- <section id="aa-latest-blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-latest-blog-area">
+            <h2>LATEST BLOG</h2>
+            <div class="row">
+              <!-- single latest blog 
+              <div class="col-md-4 col-sm-4">
+                <div class="aa-latest-blog-single">
+                  <figure class="aa-blog-img">                    
+                    <a href="#"><img src="img/promo-banner-1.jpg" alt="img"></a>  
+                      <figcaption class="aa-blog-img-caption">
+                      <span href="#"><i class="fa fa-eye"></i>5K</span>
+                      <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
+                      <a href="#"><i class="fa fa-comment-o"></i>20</a>
+                      <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                    </figcaption>                          
+                  </figure>
+                  <div class="aa-blog-info">
+                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p> 
+                    <a href="#" class="aa-read-mor-btn">Read more <span class="fa fa-long-arrow-right"></span></a>
+                  </div>
+                </div>
+              </div>
+              <!-- single latest blog 
+              <div class="col-md-4 col-sm-4">
+                <div class="aa-latest-blog-single">
+                  <figure class="aa-blog-img">                    
+                    <a href="#"><img src="img/promo-banner-3.jpg" alt="img"></a>  
+                      <figcaption class="aa-blog-img-caption">
+                      <span href="#"><i class="fa fa-eye"></i>5K</span>
+                      <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
+                      <a href="#"><i class="fa fa-comment-o"></i>20</a>
+                      <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                    </figcaption>                          
+                  </figure>
+                  <div class="aa-blog-info">
+                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p> 
+                     <a href="#" class="aa-read-mor-btn">Read more <span class="fa fa-long-arrow-right"></span></a>         
+                  </div>
+                </div>
+              </div>
+              <!-- single latest blog 
+              <div class="col-md-4 col-sm-4">
+                <div class="aa-latest-blog-single">
+                  <figure class="aa-blog-img">                    
+                    <a href="#"><img src="img/promo-banner-1.jpg" alt="img"></a>  
+                      <figcaption class="aa-blog-img-caption">
+                      <span href="#"><i class="fa fa-eye"></i>5K</span>
+                      <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
+                      <a href="#"><i class="fa fa-comment-o"></i>20</a>
+                      <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                    </figcaption>                          
+                  </figure>
+                  <div class="aa-blog-info">
+                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p> 
+                    <a href="#" class="aa-read-mor-btn">Read more <span class="fa fa-long-arrow-right"></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+    </div>
+  </section>  -->
+  <!-- / Latest Blog -->
+
+  <!-- Client Brand -->
+  <section id="aa-client-brand">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-client-brand-area">
+            <ul class="aa-client-brand-slider">
+              <li><a href="#"><img src="\static\img\wEA0SpSdVMz8AAAAABJRU5ErkJggg.jpg" alt="java img"></a></li>
+              <li><a href="#"><img src="\static\img\birdy-bag--giac-mo-co-that-ve-lo.jpg" alt="jquery img"></a></li>
+              <li><a href="#"><img src="\static\img\ce929f8db35bc80957623d42e8d8cf3c.jpg" alt="html5 img"></a></li>
+              <li><a href="#"><img src="\static\img\CHsiGAAAAABJRU5ErkJggg.jpg" alt="css3 img"></a></li>
+              <li><a href="#"><img src="\static\img\e82241b0651111eab851ff90e8dd2118.jpg" alt="wordPress img"></a></li>
+              <li><a href="#"><img src="\static\img\images.jpg" alt="joomla img"></a></li>
+              <li><a href="#"><img src="\static\img\KFbCOuYNn d Gy8HBwcHBwcHBwcHBwcH.jpg" alt="java img"></a></li>
+              <li><a href="#"><img src="\static\img\logo-missout-local-brand-viet-na.jpg" alt="jquery img"></a></li>
+              <li><a href="#"><img src="\static\img\Logo-UNCOVER-1.jpg" alt="html5 img"></a></li>
+              <li><a href="#"><img src="\static\img\The-Collectors-800x800.jpg" alt="css3 img"></a></li>
+              <li><a href="#"><img src="\static\img\b28e66c3a43e7c3198de420e8fe56d16.jpg" alt="wordPress img"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Client Brand -->
+
+  <!-- Subscribe section -->
+  <!-- <section id="aa-subscribe">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-subscribe-area">
+            <h3>Subscribe our newsletter </h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, velit!</p>
+            <form action="" class="aa-subscribe-form">
+              <input type="email" name="" id="" placeholder="Enter your Email">
+              <input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- / Subscribe section -->
+
+  <!-- footer -->  
+  <footer id="aa-footer">
+    <!-- footer bottom -->
+    <div class="aa-footer-top">
+     <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+          <div class="aa-footer-top-area">
+            <div class="row">
+              <div class="col-md-4 col-sm-8">
+                <div class="aa-footer-widget">
+                  <h3>Main Menu</h3>
+                  <ul class="aa-footer-nav">
+                    <li><a href="{% url 'home' %}">Trang chủ</a></li>
+                    <li><a href="{% url 'ao_page' %}">Áo</a></li>
+                    <li><a href="{% url 'quan_page' %}">Quần</a></li>
+                    <li><a href="{% url 'aokhoac_page' %}">Áo khoác</a></li>
+                   
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-8">
+                <div class="aa-footer-widget">
+                  <div class="aa-footer-widget">
+                    <h3>Địa chỉ </h3>
+                    <ul class="aa-footer-nav">
+                      <li><a href="#">69/69 Tô Hiến Thành P5 Q2</a></li>
+                      <li><a href="#">69/69 Thành Thái P5 Q2</a></li>
+                      <li><a href="#">69/69 Hòa Hảo P5 Q2</a></li>
+                      <li><a href="#">69/69 Lê Văn Linh P5 Q2</a></li>
+                      <!-- <li><a href="#">Special Offer</a></li> -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-md-3 col-sm-6">
+                <div class="aa-footer-widget">
+                  <div class="aa-footer-widget">
+                    <h3>Useful Links</h3>
+                    <ul class="aa-footer-nav">
+                      <li><a href="#">Site Map</a></li>
+                      <li><a href="#">Search</a></li>
+                      <li><a href="#">Advanced Search</a></li>
+                      <li><a href="#">Suppliers</a></li>
+                      <li><a href="#">FAQ</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div> -->
+              <div class="col-md-4 col-sm-8">
+                <div class="aa-footer-widget">
+                  <div class="aa-footer-widget">
+                    <h3>Liên Hệ</h3>
+                    <address>
+                      
+                      <p><span class="fa fa-phone"></span>0969696969</p>
+                      <p><span class="fa fa-envelope"></span>ntpbrand@gmail.com</p>
+                    </address>
+                    <div class="aa-footer-social">
+                      <a href="#"><span class="fa fa-facebook"></span></a>
+                      <a href="#"><span class="fa fa-twitter"></span></a>
+                      <a href="#"><span class="fa fa-google-plus"></span></a>
+                      <a href="#"><span class="fa fa-youtube"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+    </footer>
+
+  <!-- Login Modal -->  
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">                      
+        <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4>Đăng nhập và đăng kí</h4>
+          <form class="aa-login-form" action="{% url 'home' %}" method="POST"> {% csrf_token %}
+            <!--required , neu không nhập gì là invalid -> hiện thông báo, else thì input rồi ko hiện thông báo-->
+            <label for="">Tên tài khoản hoặc email<span>*</span></label>
+            <input type="text" name="username" placeholder="Nhập tài khoản hoặc email" required=""
+                     oninvalid="this.setCustomValidity('Mời nhập mật khẩu') " oninput="setCustomValidity('')">
+            <label for="">Mật khẩu<span>*</span></label>
+            <input type="password" name="password" placeholder="Mật khẩu" required=""
+                     oninvalid="this.setCustomValidity('Mời nhập mật khẩu') " oninput="setCustomValidity('')">
+            <button class="aa-browse-btn" type="submit" name="butt_dangnhap" value="clicked">Đăng nhập</button>
+            
+            <p class="aa-lost-password"><a href="#">Quên mật khẩu ?</a></p>
+            <div class="aa-register-now">
+             Bạn chưa có tài khoản ?<a href="{% url 'register' %}">Đăng kí</a>
+            </div>
+          </form>
+        </div>                        
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>    
+   {% if messages %} <!--neu messages != null thì show alert-->
+   <script>
+    {% for message in messages %}
+        alert("{{ message }}");
+    {% endfor %}
+   </script>
+   {% endif %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+ 
+  <script src="{% static '/js/bootstrap.js' %}"></script>  
+  <!-- SmartMenus jQuery plugin -->
+  
+  <script type="text/javascript" src="{% static '/js/jquery.smartmenus.js' %}"></script>
+  <!-- SmartMenus jQuery Bootstrap Addon -->
+
+  <script type="text/javascript" src="{% static '/js/jquery.smartmenus.bootstrap.js' %}"></script>   
+  <!-- To Slider JS -->
+ 
+  <script src="{% static '/js/sequence.js' %}"></script> 
+ 
+  <script src="{% static '/js/sequence-theme.modern-slide-in.js' %}"></script>   
+  <!-- Product view slider -->
+ 
+  <script type="text/javascript" src="{% static '/js/jquery.simpleGallery.js' %}"></script> 
+  
+  <script type="text/javascript" src="{% static '/js/jquery.simpleLens.js' %}"></script>
+  <!-- slick slider -->
+ 
+  <script type="text/javascript" src="{% static '/js/slick.js' %}"></script> 
+  <!-- Price picker slider --> 
+ 
+  <script type="text/javascript" src="{% static '/js/nouislider.js' %}"></script> 
+  <!-- Custom js -->
+  
+  <script src="{% static '/js/custom.js' %}"></script> 
+
+  <script type="text/javascript" src="{% static '/js/cart.js' %}"></script> 
+ <script type="text/javascript" src="{% static '/js/moneyformat.js' %}"></script>
+
+  </body>
+</html>
